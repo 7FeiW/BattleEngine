@@ -1,0 +1,22 @@
+C:\Users\Fei Wang\Documents\Visual Studio 2015\Projects\5V5BattleEngine\BattleEngine\bin\Debug\5V5BattleEngine.exe.config
+C:\Users\Fei Wang\Documents\Visual Studio 2015\Projects\5V5BattleEngine\BattleEngine\bin\Debug\BattleEngine.exe.config
+C:\Users\Fei Wang\Documents\Visual Studio 2015\Projects\BattleEngine\BattleEngine\bin\Debug\BattleEngine.exe.config
+H:\BattleEngine\BattleEngine\bin\Debug\BattleEngine.exe.config
+H:\BattleEngine\BattleEngine\bin\Debug\BattleEngine.exe
+H:\BattleEngine\BattleEngine\bin\Debug\BattleEngine.pdb
+H:\BattleEngine\BattleEngine\bin\Debug\Newtonsoft.Json.dll
+H:\BattleEngine\BattleEngine\bin\Debug\Newtonsoft.Json.xml
+H:\BattleEngine\BattleEngine\obj\Debug\BattleEngine.exe
+H:\BattleEngine\BattleEngine\obj\Debug\BattleEngine.pdb
+H:\BattleEngine\BattleEngine\obj\Debug\BattleEngine.Properties.Resources.resources
+H:\BattleEngine\BattleEngine\obj\Debug\BattleEngine.csproj.GenerateResource.Cache
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\BattleEngine.exe.config
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.exe
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.pdb
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\BattleEngine.exe
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\BattleEngine.pdb
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\Newtonsoft.Json.dll
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\Newtonsoft.Json.xml
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.csprojResolveAssemblyReference.cache
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.Properties.Resources.resources
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.csproj.GenerateResource.Cache
