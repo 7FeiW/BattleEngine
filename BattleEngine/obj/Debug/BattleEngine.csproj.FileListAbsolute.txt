@@ -20,3 +20,4 @@ E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\Newtonsoft.Json.xm
 E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.csprojResolveAssemblyReference.cache
 E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.Properties.Resources.resources
 E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\obj\Debug\BattleEngine.csproj.GenerateResource.Cache
+E:\tellf\Documents\GitHub\BattleEngine\BattleEngine\bin\Debug\CardsMetaData.json

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BattleEngine
 {
@@ -10,12 +7,13 @@ namespace BattleEngine
     {
         static void Main(string[] args)
         {
-            var battleEngine = new BattleEngine();
+            /*var battleEngine = new BattleEngine();
             var handOne = CreateHand("HandOne");
             var handTwo = CreateHand("HandTwo");
 
-            battleEngine.Battle(handOne, handTwo);
+            battleEngine.Battle(handOne, handTwo);*/
 
+            Utilities.LoadDisplayRules(@"CardsMetaData.json");
             Console.ReadKey();
 
         }

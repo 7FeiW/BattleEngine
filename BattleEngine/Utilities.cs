@@ -19,7 +19,7 @@ namespace BattleEngine
             using (StreamReader file = File.OpenText(jsonfilename))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
-                JObject jObject = (JObject)JToken.ReadFrom(reader);
+                JArray jArray = (JArray)JToken.ReadFrom(reader);
             }
         }
     }
