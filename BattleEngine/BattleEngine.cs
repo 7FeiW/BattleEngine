@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Linq;
 
 namespace BattleEngine
@@ -74,18 +71,6 @@ namespace BattleEngine
                 }
                 HandOne.UpdateCoolDown();
                 HandTwo.UpdateCoolDown();
-            }
-        }
-
-        //**********************************************************
-        // Method to load display rules from jsonfile
-        //**********************************************************
-        public void LoadDisplayRules(String jsonfilename)
-        {
-            using (StreamReader file = File.OpenText(jsonfilename))
-            using (JsonTextReader reader = new JsonTextReader(file))
-            {
-                JObject jObject = (JObject)JToken.ReadFrom(reader);
             }
         }
     }
