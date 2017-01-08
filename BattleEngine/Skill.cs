@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace BattleEngine
 {
+    // **************************************************************************************
+    //  Skill Class
+    // *************************************************************************************
     class Skill
     {
         public Skill(string displayName, int attackPoint, int coolDownInterval, int weight)

@@ -1,5 +1,8 @@
 ﻿namespace BattleEngine
 {
+    //**************************************************************************************
+    // Damage Report Class
+    //**************************************************************************************
     class DamageReport
     {
         public DamageReport(string victimName, int victimHealthPoint)

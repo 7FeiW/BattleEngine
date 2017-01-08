@@ -77,9 +77,9 @@ namespace BattleEngine
             }
         }
 
-        //******************************************
+        //**********************************************************
         // Method to load display rules from jsonfile
-        //*******************************************
+        //**********************************************************
         public void LoadDisplayRules(String jsonfilename)
         {
             using (StreamReader file = File.OpenText(jsonfilename))
