@@ -272,7 +272,5 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
-BattleEngine/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-BattleEngine/bin/Debug/BattleEngine.exe
-BattleEngine/obj/Debug/BattleEngine.exe
-*.pdb
+BattleEngine/obj/*
+BattleEngine/bin/*

@@ -2,7 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using System.Collections.Generic;
 
 namespace BattleEngine
 {
@@ -12,14 +12,15 @@ namespace BattleEngine
     class Utilities
     {
         //**********************************************************
-        // Method to load display rules from jsonfile
+        // Method to load JArray From Json File
         //**********************************************************
-        static public void LoadDisplayRules(String jsonfilename)
-        {
+        static public List<Card> LoadJCardsFromFile(String jsonfilename)
+        { 
             using (StreamReader file = File.OpenText(jsonfilename))
-            using (JsonTextReader reader = new JsonTextReader(file))
             {
-                JArray jArray = (JArray)JToken.ReadFrom(reader);
+                string jsonString = file.ReadToEnd();
+                List<Card> cards = JsonConvert.DeserializeObject<List<Card>>(jsonString);
+                return cards;
             }
         }
     }

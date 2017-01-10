@@ -1,36 +1,41 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace BattleEngine
 {
     // **************************************************************************************
     // Card Class
     // **************************************************************************************
-    class Card
+    class Card : ICloneable
     {
         public Card(string name, int healthPoint)
         {
             Name = name;
             HealthPoint = healthPoint;
-            
-            // init rests
-            mSumOfWeights = 0;
-            mCurrentSkillIndex = -1;
-            IsAlive = true;
-            CoolDownTime = 0;
-            mSkills = new List<Skill>();
         }
 
-        public string Name { get; private set; }
-        public int HealthPoint { get; private  set; }
+        [JsonProperty("Name")]
+        public string Name { get; set; }
+        [JsonProperty("HealthPoint")]
+        public int HealthPoint { get; set; }
 
-        public bool IsAlive { get; private set; }
-        public int CoolDownTime { get; private set; }
-        private List<Skill> mSkills;
-        private int mCurrentSkillIndex;
-        private int mSumOfWeights;
+        [JsonIgnore]
+        public bool IsAlive { get; private set; } = true;
+        [JsonIgnore]
+        public int CoolDownTime { get; private set; } = 0;
 
+        [JsonProperty("Skills")]
+        private List<Skill> mSkills = new List<Skill>();
+
+        [JsonIgnore]
+        private int mCurrentSkillIndex = -1;
+        [JsonIgnore]
+        private int mSumOfWeights = 0;
+
+        //******************************
         private int takeAction()
         {
             Random random = new Random();
@@ -77,6 +82,32 @@ namespace BattleEngine
         {
             CoolDownTime += updateByValue;
             return CoolDownTime;
+        }
+
+
+        // **************************************************************************************
+        // Methods to handle clone
+        // **************************************************************************************
+        public object Clone()
+        {
+            var clone = this.MemberwiseClone();
+            //handleCloned(clone);
+            return clone;
+        }
+
+        private void handleCloned(Card clone)
+        {
+
+        }
+
+
+        //***************************************************************************************
+        // OnDeserializing
+        //***************************************************************************************
+        [OnDeserializing]
+        internal void OnDeserializingMethod(StreamingContext context)
+        {
+
         }
     }
 }

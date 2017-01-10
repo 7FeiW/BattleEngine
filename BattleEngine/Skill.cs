@@ -14,17 +14,17 @@ namespace BattleEngine
             SkillDisplayName = displayName;
             AttackPoint = attackPoint;
             Weight = weight;
-            mSkillDisplayRules = new List<SkillDisplayRule>();
-            mSumOfDisplayRuleWeight = 0;
             CoolDownInterval = coolDownInterval;
         }
 
-        public string SkillDisplayName { get; }
-        public int AttackPoint { get; }
-        private List<SkillDisplayRule> mSkillDisplayRules;
-        private int mSumOfDisplayRuleWeight;
-        public int Weight { get; set; }
-        public int CoolDownInterval { get; }
+        public string SkillDisplayName { get; protected set; } = "";
+        public int AttackPoint { get; protected set; } = 0;
+        public int Weight { get; protected set; } = 0;
+        public int CoolDownInterval { get; protected set; } = 0;
+
+        private List<SkillDisplayRule> mSkillDisplayRules = new List<SkillDisplayRule>();
+        private int mSumOfDisplayRuleWeight = 0;
+
 
 
         // **************************************************************************************

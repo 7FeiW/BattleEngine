@@ -13,7 +13,7 @@ namespace BattleEngine
 
             battleEngine.Battle(handOne, handTwo);*/
 
-            Utilities.LoadDisplayRules(@"CardsMetaData.json");
+            var Cards = Utilities.LoadJCardsFromFile(@"CardsMetaData.json");
             Console.ReadKey();
 
         }
