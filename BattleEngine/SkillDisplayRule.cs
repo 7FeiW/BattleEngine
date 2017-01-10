@@ -1,16 +1,20 @@
-﻿namespace BattleEngine
+﻿using Newtonsoft.Json;
+
+namespace BattleEngine
 {
     // **************************************************************************************
     // SkillDisplayRule Class
     // **************************************************************************************
     class SkillDisplayRule
     {
-        public SkillDisplayRule(string text, int weight)
+        /*public SkillDisplayRule(string text, int weight)
         {
-            Text = text;
+            DisplayText = text;
             Weight = weight;
-        }
-        public string Text { get; }
-        public int Weight { get; }
+        }*/
+        [JsonProperty("DisplayText")]
+        public string DisplayText { get; set; }
+        [JsonProperty("Weight")]
+        public int Weight { get; set;  }
     }
 }

@@ -59,7 +59,7 @@ namespace BattleEngine
             var victim = mCards.FindAll(x => x.IsAlive == true).OrderBy(x => Guid.NewGuid()).First();
             // Now victim is under attack
             victim.UpdateHealthPoint(-attackPoint);
-            var damageReport = new DamageReport(victim.Name, victim.HealthPoint);
+            var damageReport = new DamageReport(victim.Name, victim.HealthPoints);
             return damageReport;
         }
     }

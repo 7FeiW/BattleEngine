@@ -1,90 +1,94 @@
 [
-  {
-    "Card": "GoodCard_1",
-    "HealthPoints": 100,
-    "Skills": [
-      {
-        "SkillName": "Skill_1",
-        "Weight": 10,
-        "AttackPoints": 10,
-        "SkillDisplayRule": [
-          {
-            "DisplayText": "Skill_1_Meow",
-            "Weight": 10
-          },
-          {
-            "DisplayText": "Skill_1_Meow_2",
-            "Weight": 10
-          },
-          {
-            "DisplayText": "Skill_1_Meow_3",
-            "Weight": 10
-          }
+    {
+        "Name": "GoodCard_1",
+        "HealthPoints": 100,
+        "Skills": [
+            {
+                "Name": "Skill_1",
+                "Weight": 10,
+                "AttackPoints": 10,
+                "CoolDownInterval": 5,
+                "SkillDisplayRules": [
+                    {
+                        "DisplayText": "Skill_1_Meow",
+                        "Weight": 10
+                    },
+                    {
+                        "DisplayText": "Skill_1_Meow_2",
+                        "Weight": 10
+                    },
+                    {
+                        "DisplayText": "Skill_1_Meow_3",
+                        "Weight": 10
+                    }
+                ]
+            },
+            {
+                "SkillName": "Skill_2",
+                "Weight": 5,
+                "AttackPoint": 30,
+                "CoolDownInterval": 5,
+                "SkillDisplayRules": [
+                    {
+                        "DisplayText": "Skill_2_Meow",
+                        "Weight": 10
+                    },
+                    {
+                        "DisplayText": "Skill_2_Meow_2",
+                        "Weight": 1
+                    },
+                    {
+                        "DisplayText": "Skill_2_Meow_3",
+                        "Weight": 10
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "SkillName": "Skill_2",
-        "Weight": 5,
-        "AttackPoints": 30,
-        "SkillDisplayRule": [
-          {
-            "DisplayText": "Skill_2_Meow",
-            "Weight": 10
-          },
-          {
-            "DisplayText": "Skill_2_Meow_2",
-            "Weight": 1
-          },
-          {
-            "DisplayText": "Skill_2_Meow_3",
-            "Weight": 10
-          }
+    },
+    {
+        "Name": "GoodCard_2",
+        "HealthPoints": 200,
+        "Skills": [
+            {
+                "SkillName": "Skill_1",
+                "Weight": 10,
+                "AttackPoints": 10,
+                "CoolDownInterval": 5,
+                "SkillDisplayRules": [
+                    {
+                        "DisplayText": "Skill_1_Meow",
+                        "Weight": 10
+                    },
+                    {
+                        "DisplayText": "Skill_1_Meow_2",
+                        "Weight": 10
+                    },
+                    {
+                        "DisplayText": "Skill_1_Meow_3",
+                        "Weight": 10
+                    }
+                ]
+            },
+            {
+                "SkillName": "Skill_2",
+                "Weight": 5,
+                "AttackPoints": 30,
+                "CoolDownInterval": 5,
+                "SkillDisplayRules": [
+                    {
+                        "DisplayText": "Skill_2_Meow",
+                        "Weight": 10
+                    },
+                    {
+                        "DisplayText": "Skill_2_Meow_2",
+                        "Weight": 1
+                    },
+                    {
+                        "DisplayText": "Skill_2_Meow_3",
+                        "Weight": 10
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  },
-  {
-    "Card": "GoodCard_2",
-    "HealthPoints": 200,
-    "Skills": [
-      {
-        "SkillName": "Skill_1",
-        "Weight": 10,
-        "AttackPoints": 10,
-        "SkillDisplayRule": [
-          {
-            "DisplayText": "Skill_1_Meow",
-            "Weight": 10
-          },
-          {
-            "DisplayText": "Skill_1_Meow_2",
-            "Weight": 10
-          },
-          {
-            "DisplayText": "Skill_1_Meow_3",
-            "Weight": 10
-          }
-        ]
-      },
-      {
-        "SkillName": "Skill_2",
-        "Weight": 5,
-        "AttackPoints": 30,
-        "SkillDisplayRule": [
-          {
-            "DisplayText": "Skill_2_Meow",
-            "Weight": 10
-          },
-          {
-            "DisplayText": "Skill_2_Meow_2",
-            "Weight": 1
-          },
-          {
-            "DisplayText": "Skill_2_Meow_3",
-            "Weight": 10
-          }
-        ]
-      }
-    ]
-  }
+    }
 ]

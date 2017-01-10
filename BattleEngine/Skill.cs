@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace BattleEngine
 {
@@ -9,19 +11,24 @@ namespace BattleEngine
     // *************************************************************************************
     class Skill
     {
-        public Skill(string displayName, int attackPoint, int coolDownInterval, int weight)
+        /*public Skill(string displayName, int attackPoint, int coolDownInterval, int weight)
         {
-            SkillDisplayName = displayName;
-            AttackPoint = attackPoint;
+            Name = displayName;
+            AttackPoints = attackPoint;
             Weight = weight;
             CoolDownInterval = coolDownInterval;
-        }
+        }*/
 
-        public string SkillDisplayName { get; protected set; } = "";
-        public int AttackPoint { get; protected set; } = 0;
-        public int Weight { get; protected set; } = 0;
+        [JsonProperty("SkillName")]
+        public string Name { get; set; } = "";
+        [JsonProperty("AttackPoints")]
+        public int AttackPoints { get; protected set; } = 0;
+        [JsonProperty("Weight")]
+        public int Weight { get;set; } = 0;
+        [JsonProperty("CoolDownInterval")]
         public int CoolDownInterval { get; protected set; } = 0;
 
+        [JsonProperty("SkillDisplayRules")]
         private List<SkillDisplayRule> mSkillDisplayRules = new List<SkillDisplayRule>();
         private int mSumOfDisplayRuleWeight = 0;
 
@@ -35,7 +42,9 @@ namespace BattleEngine
         public void AddSkillDisplayRules(string text, int weight)
         {
             mSumOfDisplayRuleWeight += weight;
-            var rule = new SkillDisplayRule(text, mSumOfDisplayRuleWeight);
+            var rule = new SkillDisplayRule();
+            rule.DisplayText = text;
+            rule.Weight = mSumOfDisplayRuleWeight;
             mSkillDisplayRules.Add(rule);
         }
 
@@ -45,10 +54,24 @@ namespace BattleEngine
         // **************************************************************************************
         public string GetDisplayText()
         {
-            Random random = new Random();
-            int randomInt = random.Next(0, mSumOfDisplayRuleWeight);
-            string skillDisplayRule = mSkillDisplayRules.OrderBy(s => s.Weight).ToList().First(s => s.Weight > randomInt).Text;
+            var random = new Random();
+            var randomInt = random.Next(0, mSumOfDisplayRuleWeight);
+            var skillDisplayRule = mSkillDisplayRules.OrderBy(s => s.Weight).ToList().First(s => s.Weight > randomInt).DisplayText;
             return skillDisplayRule;
+        }
+
+        //***************************************************************************************
+        // OnDeserialized
+        // Update skill weight after deserialized
+        //***************************************************************************************
+        [OnDeserialized]
+        internal void OnDeserializedHandler(StreamingContext context)
+        {
+            foreach (var skillDisplayRule in mSkillDisplayRules)
+            {
+                mSumOfDisplayRuleWeight += skillDisplayRule.Weight;
+                skillDisplayRule.Weight = mSumOfDisplayRuleWeight;
+            }
         }
     }
 }

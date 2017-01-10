@@ -11,16 +11,16 @@ namespace BattleEngine
     // **************************************************************************************
     class Card : ICloneable
     {
-        public Card(string name, int healthPoint)
+        /*public Card(string name, int healthPoint)
         {
             Name = name;
-            HealthPoint = healthPoint;
-        }
+            HealthPoints = healthPoint;
+        }*/
 
         [JsonProperty("Name")]
-        public string Name { get; set; }
-        [JsonProperty("HealthPoint")]
-        public int HealthPoint { get; set; }
+        public string Name { get; protected set; } = "";
+        [JsonProperty("HealthPoints")]
+        public int HealthPoints { get; protected set; }
 
         [JsonIgnore]
         public bool IsAlive { get; private set; } = true;
@@ -51,7 +51,7 @@ namespace BattleEngine
         {
             takeAction();
             CoolDownTime = mSkills[mCurrentSkillIndex].CoolDownInterval;
-            var action = new Action(mSkills[mCurrentSkillIndex].GetDisplayText(), mSkills[mCurrentSkillIndex].AttackPoint);
+            var action = new Action(mSkills[mCurrentSkillIndex].GetDisplayText(), mSkills[mCurrentSkillIndex].AttackPoints);
             return action;
         }
 
@@ -70,9 +70,9 @@ namespace BattleEngine
         // **************************************************************************************
         public int UpdateHealthPoint(int updateByValue)
         {
-            HealthPoint += updateByValue;
-            IsAlive = HealthPoint > 0;
-            return HealthPoint;
+            HealthPoints += updateByValue;
+            IsAlive = HealthPoints > 0;
+            return HealthPoints;
         }
 
         // **************************************************************************************
@@ -102,12 +102,17 @@ namespace BattleEngine
 
 
         //***************************************************************************************
-        // OnDeserializing
+        // OnDeserialized
+        // Update skill weight after deserialized
         //***************************************************************************************
-        [OnDeserializing]
-        internal void OnDeserializingMethod(StreamingContext context)
+        [OnDeserialized]
+        internal void OnDeserializedHandler(StreamingContext context)
         {
-
+            foreach(var skill in mSkills)
+            {
+                mSumOfWeights += skill.Weight;
+                skill.Weight = mSumOfWeights;
+            }
         }
     }
 }

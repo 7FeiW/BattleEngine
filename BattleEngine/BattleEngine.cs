@@ -47,7 +47,7 @@ namespace BattleEngine
                     var attackPoint = currentAction.AttackPoint;
                     var displayString = currentAction.DisplayString;
                     var attackerName = actablecards[idx].Name;
-                    var attackerHealthPoint = actablecards[idx].HealthPoint;
+                    var attackerHealthPoint = actablecards[idx].HealthPoints;
                     DamageReport damageReport;
 
                     if (idx < numOfActableCardsHandOne)
