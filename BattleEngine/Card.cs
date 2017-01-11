@@ -11,12 +11,6 @@ namespace BattleEngine
     // **************************************************************************************
     class Card : ICloneable
     {
-        /*public Card(string name, int healthPoint)
-        {
-            Name = name;
-            HealthPoints = healthPoint;
-        }*/
-
         [JsonProperty("Name")]
         public string Name { get; protected set; } = "";
         [JsonProperty("HealthPoints")]
@@ -90,14 +84,16 @@ namespace BattleEngine
         // **************************************************************************************
         public object Clone()
         {
-            var clone = this.MemberwiseClone();
-            //handleCloned(clone);
+            //Creates a shallow copy of the current 
+            Card clone = (Card)this.MemberwiseClone();
+            //Deep copy 
+            handleDeepCopy(clone);
             return clone;
         }
 
-        private void handleCloned(Card clone)
+        private void handleDeepCopy(Card clone)
         {
-
+            
         }
 
 
