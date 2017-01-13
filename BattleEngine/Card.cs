@@ -9,12 +9,14 @@ namespace BattleEngine
     // **************************************************************************************
     // Card Class
     // **************************************************************************************
-    class Card : ICloneable
+    class Card : ICloneable<Card>
     {
+        [JsonProperty("Id")]
+        public int Id { get; private set; }
         [JsonProperty("Name")]
-        public string Name { get; protected set; } = "";
+        public string Name { get; private set; } = "";
         [JsonProperty("HealthPoints")]
-        public int HealthPoints { get; protected set; }
+        public int HealthPoints { get; private set; }
 
         [JsonIgnore]
         public bool IsAlive { get; private set; } = true;
@@ -82,7 +84,7 @@ namespace BattleEngine
         // **************************************************************************************
         // Methods to handle clone
         // **************************************************************************************
-        public object Clone()
+        public Card Clone()
         {
             //Creates a shallow copy of the current 
             Card clone = (Card)this.MemberwiseClone();
@@ -93,9 +95,8 @@ namespace BattleEngine
 
         private void handleDeepCopy(Card clone)
         {
-            
+            clone.mSkills = mSkills.Select(skill => skill.Clone()).ToList();
         }
-
 
         //***************************************************************************************
         // OnDeserialized
@@ -104,7 +105,9 @@ namespace BattleEngine
         [OnDeserialized]
         internal void OnDeserializedHandler(StreamingContext context)
         {
-            foreach(var skill in mSkills)
+            //just be safe
+            mSumOfWeights = 0;
+            foreach (var skill in mSkills)
             {
                 mSumOfWeights += skill.Weight;
                 skill.Weight = mSumOfWeights;

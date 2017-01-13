@@ -1,6 +1,7 @@
 [
     {
         "Name": "GoodCard_1",
+		"ID": "Card_001",
         "HealthPoints": 100,
         "Skills": [
             {
@@ -47,6 +48,7 @@
     },
     {
         "Name": "GoodCard_2",
+		"ID": "Card_002",
         "HealthPoints": 200,
         "Skills": [
             {

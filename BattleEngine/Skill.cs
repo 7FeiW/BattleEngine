@@ -9,30 +9,20 @@ namespace BattleEngine
     // **************************************************************************************
     //  Skill Class
     // *************************************************************************************
-    class Skill
+    class Skill: ICloneable<Skill>
     {
-        /*public Skill(string displayName, int attackPoint, int coolDownInterval, int weight)
-        {
-            Name = displayName;
-            AttackPoints = attackPoint;
-            Weight = weight;
-            CoolDownInterval = coolDownInterval;
-        }*/
-
         [JsonProperty("SkillName")]
-        public string Name { get; set; } = "";
+        public string Name { get; private set; } = "";
         [JsonProperty("AttackPoints")]
-        public int AttackPoints { get; protected set; } = 0;
+        public int AttackPoints { get; private set; } = 0;
         [JsonProperty("Weight")]
-        public int Weight { get;set; } = 0;
+        public int Weight { get; set; } = 0;
         [JsonProperty("CoolDownInterval")]
-        public int CoolDownInterval { get; protected set; } = 0;
+        public int CoolDownInterval { get; private set; } = 0;
 
         [JsonProperty("SkillDisplayRules")]
         private List<SkillDisplayRule> mSkillDisplayRules = new List<SkillDisplayRule>();
         private int mSumOfDisplayRuleWeight = 0;
-
-
 
         // **************************************************************************************
         //  Method To add skill dispay rule
@@ -72,6 +62,23 @@ namespace BattleEngine
                 mSumOfDisplayRuleWeight += skillDisplayRule.Weight;
                 skillDisplayRule.Weight = mSumOfDisplayRuleWeight;
             }
+        }
+
+        // **************************************************************************************
+        // Methods to handle clone
+        // **************************************************************************************
+        public Skill Clone()
+        {
+            //Creates a shallow copy of the current 
+            Skill clone = (Skill)this.MemberwiseClone();
+            //Deep copy 
+            handleDeepCopy(clone);
+            return clone;
+        }
+
+        private void handleDeepCopy(Skill clone)
+        {
+            clone.mSkillDisplayRules = mSkillDisplayRules.Select(rule => rule.Clone()).ToList();
         }
     }
 }
