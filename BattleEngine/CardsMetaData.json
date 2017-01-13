@@ -7,7 +7,7 @@
             {
                 "Name": "Skill_1",
                 "Weight": 10,
-                "AttackPoints": 10,
+                "AttackPoints": 30,
                 "CoolDownInterval": 5,
                 "SkillDisplayRules": [
                     {
@@ -27,7 +27,7 @@
             {
                 "SkillName": "Skill_2",
                 "Weight": 5,
-                "AttackPoint": 30,
+                "AttackPoints": 30,
                 "CoolDownInterval": 5,
                 "SkillDisplayRules": [
                     {
@@ -36,7 +36,7 @@
                     },
                     {
                         "DisplayText": "Skill_2_Meow_2",
-                        "Weight": 1
+                        "Weight": 10
                     },
                     {
                         "DisplayText": "Skill_2_Meow_3",
@@ -83,7 +83,7 @@
                     },
                     {
                         "DisplayText": "Skill_2_Meow_2",
-                        "Weight": 1
+                        "Weight": 10
                     },
                     {
                         "DisplayText": "Skill_2_Meow_3",

@@ -12,7 +12,7 @@ namespace BattleEngine
     class Card : ICloneable<Card>
     {
         [JsonProperty("Id")]
-        public int Id { get; private set; }
+        public string Id { get; private set; }
         [JsonProperty("Name")]
         public string Name { get; private set; } = "";
         [JsonProperty("HealthPoints")]
@@ -27,17 +27,18 @@ namespace BattleEngine
         private List<Skill> mSkills = new List<Skill>();
 
         [JsonIgnore]
-        private int mCurrentSkillIndex = -1;
+        private Skill mCurrentSkill = null;
         [JsonIgnore]
         private int mSumOfWeights = 0;
+        [JsonIgnore]
+        private Random random = new Random();
 
         //******************************
-        private int takeAction()
+        private Skill takeAction()
         {
-            Random random = new Random();
             int randomInt = random.Next(0, mSumOfWeights);
-            mCurrentSkillIndex = mSkills.OrderBy(s => s.Weight).ToList().FindIndex(s => s.Weight > randomInt);
-            return mCurrentSkillIndex;
+            mCurrentSkill = mSkills.OrderBy(s => s.Weight).ToList().Where(s => s.Weight > randomInt).FirstOrDefault();
+            return mCurrentSkill;
         }
 
         // **************************************************************************************
@@ -46,8 +47,8 @@ namespace BattleEngine
         public Action GetCurrentAction()
         {
             takeAction();
-            CoolDownTime = mSkills[mCurrentSkillIndex].CoolDownInterval;
-            var action = new Action(mSkills[mCurrentSkillIndex].GetDisplayText(), mSkills[mCurrentSkillIndex].AttackPoints);
+            CoolDownTime = mCurrentSkill.CoolDownInterval;
+            var action = new Action(mCurrentSkill.GetDisplayText(), mCurrentSkill.AttackPoints);
             return action;
         }
 
