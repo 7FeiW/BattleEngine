@@ -43,6 +43,17 @@ namespace BattleEngine
                 var actablecards = handOneActableCards.Concat(handTwoActableCards).ToList();
                 foreach (var idx in actionOrder)
                 {
+                    // check if current still alive in current round
+                    if(!actablecards[idx].IsAlive)
+                    {
+                        Console.WriteLine("GameOver: HandOne --" + HandOne.AllDead().ToString() + " HandTwo --" + HandTwo.AllDead().ToString());
+                        continue;
+                    }
+                    // check if game is over already
+                    if(HandOne.AllDead() || HandTwo.AllDead())
+                    {
+                        break;
+                    }
                     var currentAction = actablecards[idx].GetCurrentAction();
                     var attackPoint = currentAction.AttackPoint;
                     var displayString = currentAction.DisplayString;
@@ -52,25 +63,24 @@ namespace BattleEngine
 
                     if (idx < numOfActableCardsHandOne)
                     {
-                        damageReport = HandOne.UnderAttack(attackPoint);
+                        damageReport = HandTwo.UnderAttack(attackPoint);
                     }
                     else
                     {
-                        damageReport = HandTwo.UnderAttack(attackPoint);
+                        damageReport = HandOne.UnderAttack(attackPoint);
                     }
 
                     var victimName = damageReport.VictimName;
                     var victimHealthPoint = damageReport.VictimHealthPoint;
                     Console.WriteLine(attackerName + " (HP: " + attackerHealthPoint.ToString() + ") " + displayString + " (Attack Point: " + attackPoint.ToString() + ") " + victimName + " (Remaining HP: " + victimHealthPoint.ToString() + ")");
                 }
-
                 if (HandOne.AllDead() || HandTwo.AllDead())
                 {
                     Console.WriteLine("GameOver: HandOne --" + HandOne.AllDead().ToString() + " HandTwo --" + HandTwo.AllDead().ToString());
                     break;
                 }
-                HandOne.UpdateCoolDown();
-                HandTwo.UpdateCoolDown();
+                HandOne.UpdateCoolDown(-1);
+                HandTwo.UpdateCoolDown(-1);
             }
         }
     }

@@ -7,7 +7,7 @@ namespace BattleEngine
         static void Main(string[] args)
         {
             var Cards = Utilities.LoadJCardsFromFile(@"CardsMetaData.json");
-
+            Utilities.SetRadomSeed((int)DateTime.Now.Ticks & 0x0000FFFF);
             var battleEngine = new BattleEngine();
             var handOne = new Hand();
             var handTwo = new Hand();

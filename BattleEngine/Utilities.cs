@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 namespace BattleEngine
@@ -11,8 +10,17 @@ namespace BattleEngine
     //**********************************************************
     class Utilities
     {
+        static public Random Random = new Random();
         //**********************************************************
-        // Method to load JArray From Json File
+        // Method to load List of Cards From Json File
+        //**********************************************************
+        static public void SetRadomSeed(int seed)
+        {
+            Random = new Random(seed);
+        }
+
+        //**********************************************************
+        // Method to load List of Cards From Json File
         //**********************************************************
         static public List<Card> LoadJCardsFromFile(String jsonfilename)
         { 

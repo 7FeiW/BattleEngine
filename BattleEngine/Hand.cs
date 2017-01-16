@@ -56,7 +56,7 @@ namespace BattleEngine
         public DamageReport UnderAttack(int attackPoint)
         {
             // victim is the random pick from remaining alive cards
-            var victim = mCards.FindAll(x => x.IsAlive == true).OrderBy(x => Guid.NewGuid()).First();
+            var victim = mCards.FindAll(x => x.IsAlive == true).OrderBy(x => Utilities.Random.Next()).First();
             // Now victim is under attack
             victim.UpdateHealthPoint(-attackPoint);
             var damageReport = new DamageReport(victim.Name, victim.HealthPoints);

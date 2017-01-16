@@ -30,13 +30,11 @@ namespace BattleEngine
         private Skill mCurrentSkill = null;
         [JsonIgnore]
         private int mSumOfWeights = 0;
-        [JsonIgnore]
-        private Random random = new Random();
 
         //******************************
         private Skill takeAction()
         {
-            int randomInt = random.Next(0, mSumOfWeights);
+            int randomInt = Utilities.Random.Next(0, mSumOfWeights);
             mCurrentSkill = mSkills.OrderBy(s => s.Weight).ToList().Where(s => s.Weight > randomInt).FirstOrDefault();
             return mCurrentSkill;
         }
@@ -80,7 +78,6 @@ namespace BattleEngine
             CoolDownTime += updateByValue;
             return CoolDownTime;
         }
-
 
         // **************************************************************************************
         // Methods to handle clone

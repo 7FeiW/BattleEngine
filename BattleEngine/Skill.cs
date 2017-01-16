@@ -25,9 +25,6 @@ namespace BattleEngine
 
         [JsonIgnore]
         private int mSumOfDisplayRuleWeight = 0;
-        [JsonIgnore]
-        private Random random = new Random();
-
 
         // **************************************************************************************
         //  Method To add skill dispay rule
@@ -49,7 +46,7 @@ namespace BattleEngine
         // **************************************************************************************
         public string GetDisplayText()
         {
-            var randomInt = random.Next(0, mSumOfDisplayRuleWeight);
+            var randomInt = Utilities.Random.Next(0, mSumOfDisplayRuleWeight);
             var skillDisplayRule = mSkillDisplayRules.OrderBy(s => s.Weight).ToList().First(s => s.Weight > randomInt).DisplayText;
             return skillDisplayRule;
         }
